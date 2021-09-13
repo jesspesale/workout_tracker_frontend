@@ -31,10 +31,16 @@ function getExerciseAttributes() {
 }
 
 function createFormHandler(e) {
-    e.preventDefault()
-    let event = e
+    e.preventDefault()  // prevents the page from refreshing when submit is clicked      
+    // let event = e
     console.log(e)
-    debugger
+
+    const titleInput = document.querySelector("#input-title").value
+    const categoryChoice = document.querySelector("#category").value
+    const dateInput = document.querySelector("#input-date").value
+    const durationInput = document.querySelector("#input-duration").value
+
+    
 }
 
 
