@@ -9,8 +9,9 @@ function getExerciseAttributes() {
     fetch(attr_url)
     .then(response => response.json())
     .then(details => {
-
-    details.data.forEach(detail => {
+        let det = details
+            console.log(details)
+        details.data.forEach(detail => {
         const detailsSetUp = `<div data-id=${detail.id}>
             <h2>${detail.attributes.workout.title}</h2>
             <h3>Category: ${detail.attributes.category}</h3>
