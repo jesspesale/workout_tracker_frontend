@@ -1,8 +1,12 @@
 const attr_url = "http://127.0.0.1:3000/api/v1/exercise_attributes"
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Dom is loaded")
     getExerciseAttributes()
+    const newWorkoutForm = document.querySelector("#exercise-attributes-form")
+
+    newWorkoutForm.addEventListener("submit", (e) =>{
+        createFormHandler(e)
+    })
 } )
 
 function getExerciseAttributes() {
@@ -16,7 +20,7 @@ function getExerciseAttributes() {
             <h2>${detail.attributes.workout.title}</h2>
             <h3>Category: ${detail.attributes.category}</h3>
             <h4>Date: ${detail.attributes.date}</h4>
-            <h4>Duration: ${detail.attributes.category.name} (in minutes)</h4>
+            <h4>Duration: ${detail.attributes.duration} (in minutes)</h4>
             <button data-id=${detail.id}>edit</button>
           </div>
           <br><br>`;
@@ -24,6 +28,13 @@ function getExerciseAttributes() {
           document.querySelector('#detail-container').innerHTML += detailsSetUp
       })
     })
+}
+
+function createFormHandler(e) {
+    e.preventDefault()
+    let event = e
+    console.log(e)
+    debugger
 }
 
 
