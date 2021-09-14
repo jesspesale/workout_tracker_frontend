@@ -1,0 +1,12 @@
+rake db:reset - to reset seed data
+
+        <form id="exercise-attributes-form">
+            <h2>Add a New Workout: </h2>
+            <label>Title:</label>
+            <input id='input-title' type="text" name="title" value="" placeholder="Title your workout" class="input-text">
+            <br><br>
+            <label>Date:</label>
+            <input id='input-date' type="text" name="date" value="" placeholder="EX: 08/12/2021.." class="input-text">
+            <br><br>
+        
+        </form>
