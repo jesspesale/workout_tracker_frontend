@@ -1,4 +1,4 @@
-
+rake db:reset - to reset seed data
 
         <form id="exercise-attributes-form">
             <h2>Add a New Workout: </h2>
