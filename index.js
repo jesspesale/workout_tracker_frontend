@@ -32,9 +32,7 @@ function getExerciseAttributes() {
 
 function createFormHandler(e) {
     e.preventDefault()  // prevents the page from refreshing when submit is clicked      
-    // let even = e
-    // console.log(e)
-    // debugger
+
     const titleInput = document.querySelector("#input-title").value
     const categoryChoice = document.querySelector("#category").value
     const calorieInput = document.querySelector("#input-calories").value
@@ -48,23 +46,17 @@ function createFormHandler(e) {
 
 
 function postWorkout(title, category, calories, date, duration) {
-    console.log(title, category, calories, date, duration)
+    // console.log(title, category, calories, date, duration)
     let bodyData = {title, category, calories, date, duration}
     fetch(attr_url, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(bodyData)
-        // JSON.stringify({        
-        //     title: title,
-        //     category: category,
-        //     date: date,
-        //     duration: duration
-        // }  )   
     })
     .then(response => response.json())
     .then(workout => {
         console.log(workout)
-        // debugger
+
         const newWorkout = `
             <div data-id=${workout.id}>
             <h2>${workout.title}</h2>
@@ -77,5 +69,5 @@ function postWorkout(title, category, calories, date, duration) {
         `
         document.querySelector('#attributes-container').innerHTML += newWorkout
         // can refactor ^ into a global variable since used more than once
-    })
+       })
 }
