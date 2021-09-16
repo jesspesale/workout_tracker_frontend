@@ -42,7 +42,12 @@ function getWorkouts() {
 //  
 
 function createFormHandler(e) {
+<<<<<<< HEAD
     e.preventDefault()          // prevents the page from refreshing when submit is clicked      
+=======
+    e.preventDefault()  // prevents the page from refreshing when submit is clicked      
+
+>>>>>>> 253ff717b0819534ccb5eed6e5103790ae893fbe
     const titleInput = document.querySelector("#input-title").value
     const dateInput = document.querySelector("#input-date").value
     const categoryChoice = document.querySelector("#category").value
@@ -51,20 +56,34 @@ function createFormHandler(e) {
     postWorkout(titleInput, dateInput, categoryChoice, calorieInput,  durationInput)
 }
 
+<<<<<<< HEAD
 function postWorkout(title, date, category, calories, duration) {
     // console.log(title, date, category, calories, duration)
     let bodyData = {title, date, category, calories, duration}
     fetch(workout_url, {
+=======
+
+function postWorkout(title, category, calories, date, duration) {
+    // console.log(title, category, calories, date, duration)
+    let bodyData = {title, category, calories, date, duration}
+    fetch(attr_url, {
+>>>>>>> 253ff717b0819534ccb5eed6e5103790ae893fbe
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(bodyData)
     })
     .then(response => response.json())
+<<<<<<< HEAD
     .then(wo => {
         let workout = wo.data
         // console.log(workout)
         let w = workout.attributes.exercise_attributes[workout.attributes.exercise_attributes.length - 1]
         // debugger
+=======
+    .then(workout => {
+        console.log(workout)
+
+>>>>>>> 253ff717b0819534ccb5eed6e5103790ae893fbe
         const newWorkout = `
             <div data-id=${workout.id}>
             <h2>${workout.attributes.title}</h2>
@@ -76,6 +95,7 @@ function postWorkout(title, date, category, calories, duration) {
             </div>
         `
         document.querySelector('#attributes-container').innerHTML += newWorkout
+<<<<<<< HEAD
     //     // can refactor ^ into a global variable since used more than once
     })
 }
@@ -83,3 +103,8 @@ function postWorkout(title, date, category, calories, duration) {
 
 
 
+=======
+        // can refactor ^ into a global variable since used more than once
+       })
+}
+>>>>>>> 253ff717b0819534ccb5eed6e5103790ae893fbe
