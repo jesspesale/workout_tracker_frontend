@@ -1,4 +1,47 @@
 
+ // In a show workout function (display workout)
+
+
+
+
+
+const AddNewExerciseForm = document.createElement('form')
+
+const exerciseCategoryInput = document.createElement('select') // is select right??
+exerciseCategoryInput.setAttribute('id', 'new-category')
+exerciseCategoryInput.setAttribute('type', 'new-category')
+exerciseCategoryInput.setAttribute('id', 'new-category')
+
+const exerciseCaloriesInput = document.createElement('input')
+exerciseCaloriesInput.setAttribute('id', 'new-calories')
+exerciseCaloriesInput.setAttribute('type', 'text')
+exerciseCaloriesInput.setAttribute('required', 'true')
+
+
+const exerciseDurationInput = document.createElement('input')
+exerciseDurationInput.setAttribute('id', 'new-duration')
+exerciseDurationInput.setAttribute('type', 'text')
+exerciseDurationInput.setAttribute('[placeholder]', 'In minutes')
+exerciseDurationInput.setAttribute('required', 'true')
+
+const exerciseSubmitted = document.createElement('input')
+exerciseSubmitted.setAttribute('id', 'create-exercise')
+exerciseSubmitted.setAttribute('type', 'submit')
+exerciseSubmitted.setAttribute('value', 'Add Exercise')
+
+
+AddNewExerciseForm.appendChild(exerciseCategoryInput)
+AddNewExerciseForm.appendChild(exerciseCaloriesInput)
+AddNewExerciseForm.appendChild(exerciseDurationInput)
+AddNewExerciseForm.appendChild(exerciseSubmitted)
+
+
+
+
+
+
+
+
 
 // Creating a new exercise attribute that is associated with a new workout
 

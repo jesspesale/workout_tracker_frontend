@@ -12,23 +12,6 @@ rake db:reset - to reset seed data
         </form>
 
 
-                let id = attributes.id
-                let date = attributes.date
-                let category = attributes.category
-                let calories = attributes.calories
-                let duration = attributes.duration
-                debugger
-                const postAttributes = `<div data-id=${id}>
-                
-                </div>`
-
-        let newDiv = document.createElement("div")
-        let newTitle = document.createElement("h2")
-            newDiv.setAttribute("data-id", `${w.id}`)
-            newTitle.innerHTML = `Title: ${workout.title}`
-            workoutContainer.appendChild(newDiv, newTitle)
-
-
     <form id="new-workout-form">
         <h2>Add a new workout: </h2>
         <label>Title:</label>
@@ -36,3 +19,10 @@ rake db:reset - to reset seed data
         <br><br>
         <input id='create-button' type="submit" name="submit" value="Add Workout" class="submit">
     </form>
+
+
+
+
+
+
+
