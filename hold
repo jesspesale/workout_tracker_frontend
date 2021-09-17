@@ -21,6 +21,34 @@ rake db:reset - to reset seed data
     </form>
 
 
+Get Workout Fetch
+        const postAttributes = ` <div data-id=${workoutId}>
+        <h2>Title: ${workout.title}</h2>
+        <h3>Date: ${workout.date}</h3>
+        <h3>Category: ${attr.category}</h3>
+        <h4>Calories: ${attr.calories}</h4>
+        <h4>Duration: ${attr.duration} (in minutes)</h4>
+        <button data-id=${workoutId}>Add another exercise</button>
+    </div>
+    <br><br>`
+    
+    document.querySelector('#workout-container').innerHTML += postAttributes
+
+
+
+POST fetch render - JS
+    const newWorkout = `
+    <div data-id=${workout.id}>
+        <h2>${workout.attributes.title}</h2>
+        <h3>Date: ${workout.attributes.date}</h3>
+        <h3>Category: ${w.category}</h3>
+        <h4>Calories: ${w.calories}</h4>
+        <h4>Duration: ${w.duration} (in minutes)</h4>
+        <button data-id=${workout.id}>Add another exercise</button>
+    </div>
+    `
+    document.querySelector('#new-workout-container').innerHTML += newWorkout
+    // can refactor ^ into a global variable since used more than once
 
 
 
