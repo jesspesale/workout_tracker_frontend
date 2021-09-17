@@ -22,14 +22,12 @@ function getWorkouts() {
             // console.log(w)
             // console.log(workout)
             workout.exercise_attributes.forEach(attr => {
-                
                 // let attributes = attr
                 render(workoutId, workout, attr )
-
             })
-
-      })
+        })
     })
+    // .catch(err => console.log(err))
 }
 
 function render(workoutId, workout, attributes) {
