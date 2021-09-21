@@ -19,21 +19,27 @@ function getWorkouts() {
         workouts.data.forEach(w => {
             let workout = w.attributes
             let workoutId = w.id
-            // debugger
-            renderWorkout(workoutId, workout)
-                let newWorkout = new Workout(workoutId, workout)
+           
+            
+            let newWorkout = new Workout(workoutId, workout)
+            document.querySelector('#workout-container').innerHTML +=  newWorkout.renderWorkout()
 
             workout.exercise_attributes.forEach(attr => {    
                 // new ExerciseAttribute(attr)
-                let att = attr
+                // let att = attr
+                let newAttribute = new ExerciseAttribute(attr)
                 // debugger
-                renderAttributes(workoutId, attr)
+                // renderAttributes(workoutId, attr)
+                document.querySelector(`#workout-${workoutId}`).innerHTML += newAttribute.renderAttributes() 
+                debugger
             })
         })
     })
     // .catch(err => console.log(err))
 }
 
+
+// put in hold already
 function renderWorkout(workoutId, workout) {
     const postWorkout = ` <div id="workout-${workoutId}" data-id=${workoutId}>
         <h2>Title: ${workout.title}</h2>
@@ -42,7 +48,7 @@ function renderWorkout(workoutId, workout) {
     document.querySelector('#workout-container').innerHTML +=  postWorkout
 }
 
-
+// put in hold already
 function renderAttributes(workoutId, attributes) {
         const postAttributes = `
         <h3>Category: ${attributes.category}</h3>
