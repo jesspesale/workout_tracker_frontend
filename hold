@@ -51,6 +51,21 @@ POST fetch render - JS
     // can refactor ^ into a global variable since used more than once
 
 
+Render for both attributes and workout
+(in postWorkout) // render(workoutId, workout.attributes, w)
+(in getWorkout) // render(workoutId, workout, attr )
+function render(workoutId, workout, attributes) {
+const postAttributes = ` <div id="workout-${workoutId}" data-id=${workoutId}>
+    <h2>Title: ${workout.title}</h2>
+    <h3>Date: ${workout.date}</h3>
+    <h3>Category: ${attributes.category}</h3>
+    <h4>Calories: ${attributes.calories}</h4>
+    <h4>Duration: ${attributes.duration} (in minutes)</h4>
+    <button data-id=${workout.id}>Add another exercise</button>
+</div>
+<br><br>`
 
+document.querySelector('#workout-container').innerHTML += postAttributes
+}
 
 
