@@ -8,7 +8,7 @@ class ExerciseAttribute {
         this.calories = attribute.calories
         this.duration = attribute.duration
         this.workout_id = attribute.workout_id
-        
+        ExerciseAttribute.all.push(this)
     }
 
     // function renderAttributes(workoutId, attributes) {
@@ -25,3 +25,5 @@ class ExerciseAttribute {
         
     // }
 }
+
+ExerciseAttribute.all = []
