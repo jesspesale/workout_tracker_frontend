@@ -2,7 +2,12 @@
 
 class ExerciseAttribute {
 
-    constructor() {
+    constructor(attribute) {
+        this.id = attribute.id
+        this.category = attribute.category
+        this.calories = attribute.calories
+        this.duration = attribute.duration
+        this.workout_id = attribute.workout_id
         
     }
 
