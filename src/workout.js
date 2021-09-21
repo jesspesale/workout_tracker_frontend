@@ -8,15 +8,16 @@ class Workout {
         this.title = workout.title
         this.date = workout.date
         Workout.all.push(this)
-        debugger
+        // debugger
     }
 
-    // function renderWorkout(workoutId, workout) {
-    //     const postWorkout = ` <div id="workout-${workoutId}" data-id=${workoutId}>
-    //         <h2>Title: ${workout.title}</h2>
-    //         <h3>Date: ${workout.date}</h3>`
-    //     document.querySelector('#workout-container').innerHTML +=  postWorkout
-    // }
+    
+    renderWorkout() {
+        // debugger
+        return `<div id="workout-${this.id}" data-id=${this.id}>
+            <h2>Title: ${this.title}</h2>
+            <h3>Date: ${this.date}</h3>`
+    }
 
 }
 
