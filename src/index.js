@@ -19,12 +19,14 @@ function getWorkouts() {
         workouts.data.forEach(w => {
             let workout = w.attributes
             let workoutId = w.id
-            //  console.log(w)
+            // debugger
             renderWorkout(workoutId, workout)
-            // new Workout(w)
-            workout.exercise_attributes.forEach(attr => {
-                
+                let newWorkout = new Workout(workoutId, workout)
+
+            workout.exercise_attributes.forEach(attr => {    
                 // new ExerciseAttribute(attr)
+                let att = attr
+                // debugger
                 renderAttributes(workoutId, attr)
             })
         })
@@ -39,6 +41,7 @@ function renderWorkout(workoutId, workout) {
 
     document.querySelector('#workout-container').innerHTML +=  postWorkout
 }
+
 
 function renderAttributes(workoutId, attributes) {
         const postAttributes = `
@@ -68,8 +71,6 @@ function postWorkout(title, date, category, calories, duration) {
         renderAttributes(workoutId, w)
     })
 }
-
-
 
 function createFormHandler(e) {
     e.preventDefault()          // prevents the page from refreshing when submit is clicked      
