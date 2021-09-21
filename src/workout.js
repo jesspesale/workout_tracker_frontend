@@ -2,11 +2,13 @@
 
 class Workout {
 
-    constructor(data) {
+    constructor(id, workout) {
         // debugger
-        this.id = data.id
-        this.title = data.title;
-        this.date = data.date;
+        this.id = id
+        this.title = workout.title
+        this.date = workout.date
+        Workout.all.push(this)
+        debugger
     }
 
     // function renderWorkout(workoutId, workout) {
@@ -17,3 +19,5 @@ class Workout {
     // }
 
 }
+
+Workout.all = []
