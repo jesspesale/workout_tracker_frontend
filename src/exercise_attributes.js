@@ -3,6 +3,7 @@
 class ExerciseAttribute {
 
     constructor(attribute) {
+        // debugger
         this.id = attribute.id
         this.category = attribute.category
         this.calories = attribute.calories
@@ -11,19 +12,16 @@ class ExerciseAttribute {
         ExerciseAttribute.all.push(this)
     }
 
-    // function renderAttributes(workoutId, attributes) {
+    renderAttributes() {
+        return `
+        <h3>Category: ${this.category}</h3>
+        <h4>Calories: ${this.calories}</h4>
+        <h4>Duration: ${this.duration} (in minutes)</h4> 
+        <button data-id=${this.workout_id}>Delete Workout</button>
+        </div> <br><br><br>`
+    }
 
-    //         const postAttributes = `
-    //         <h3>Category: ${attributes.category}</h3>
-    //         <h4>Calories: ${attributes.calories}</h4>
-    //         <h4>Duration: ${attributes.duration} (in minutes)</h4> 
-    //         <button data-id=${workoutId}>Delete Workout</button>
-    //         </div>
-    //         <br><br>`
 
-    //         document.querySelector(`#workout-${workoutId}`).innerHTML += postAttributes
-        
-    // }
 }
 
 ExerciseAttribute.all = []
