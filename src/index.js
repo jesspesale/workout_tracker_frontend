@@ -19,29 +19,45 @@ function getWorkouts() {
         workouts.data.forEach(w => {
             let workout = w.attributes
             let workoutId = w.id
-            // console.log(w)
-            // console.log(workout)
-            workout.exercise_attributes.forEach(attr => {
-                // let attributes = attr
-                render(workoutId, workout, attr )
+           
+            
+            let newWorkout = new Workout(workoutId, workout)
+            document.querySelector('#workout-container').innerHTML +=  newWorkout.renderWorkout()
+
+            workout.exercise_attributes.forEach(attr => {    
+                // new ExerciseAttribute(attr)
+                // let att = attr
+                let newAttribute = new ExerciseAttribute(attr)
+                // debugger
+                // renderAttributes(workoutId, attr)
+                document.querySelector(`#workout-${workoutId}`).innerHTML += newAttribute.renderAttributes() 
+                debugger
             })
         })
     })
     // .catch(err => console.log(err))
 }
 
-function render(workoutId, workout, attributes) {
-        const postAttributes = ` <div data-id=${workoutId}>
+
+// put in hold already
+function renderWorkout(workoutId, workout) {
+    const postWorkout = ` <div id="workout-${workoutId}" data-id=${workoutId}>
         <h2>Title: ${workout.title}</h2>
-        <h3>Date: ${workout.date}</h3>
+        <h3>Date: ${workout.date}</h3>`
+
+    document.querySelector('#workout-container').innerHTML +=  postWorkout
+}
+
+// put in hold already
+function renderAttributes(workoutId, attributes) {
+        const postAttributes = `
         <h3>Category: ${attributes.category}</h3>
         <h4>Calories: ${attributes.calories}</h4>
         <h4>Duration: ${attributes.duration} (in minutes)</h4> 
-        <button data-id=${workout.id}>Add another exercise</button>
-        </div>
-        <br><br>`
+        <button data-id=${workoutId}>Delete Workout</button>
+        </div> <br><br><br>`
 
-        document.querySelector('#workout-container').innerHTML +=  postAttributes
+        document.querySelector(`#workout-${workoutId}`).innerHTML += postAttributes     
 }
 
 function postWorkout(title, date, category, calories, duration) {
@@ -54,18 +70,13 @@ function postWorkout(title, date, category, calories, duration) {
     })
     .then(response => response.json())
     .then(wo => {
-        let workout = wo.data
+        let workout = wo.data.attributes
         let workoutId = workout.id
-        // console.log(workout)
-        let w = workout.attributes.exercise_attributes[workout.attributes.exercise_attributes.length - 1]
-        // debugger
-        render(workoutId, workout.attributes, w)
-        console.log(workout)
-
+        let w = workout.exercise_attributes[workout.exercise_attributes.length - 1]
+        renderWorkout(workoutId, workout)
+        renderAttributes(workoutId, w)
     })
 }
-
-
 
 function createFormHandler(e) {
     e.preventDefault()          // prevents the page from refreshing when submit is clicked      
@@ -75,6 +86,12 @@ function createFormHandler(e) {
     const calorieInput = document.querySelector("#input-calories").value
     const durationInput = document.querySelector("#input-duration").value
     postWorkout(titleInput, dateInput, categoryChoice, calorieInput,  durationInput)
+    
+    document.querySelector("#input-title").value = ""
+    document.querySelector("#input-date").value = ""
+    document.querySelector("#category").value = ""
+    document.querySelector("#input-calories").value = ""
+    document.querySelector("#input-duration").value = ""
 }
 
 

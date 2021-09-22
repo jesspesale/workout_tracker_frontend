@@ -21,7 +21,7 @@ rake db:reset - to reset seed data
     </form>
 
 
-Get Workout Fetch
+** Get Workout Fetch
         const postAttributes = ` <div data-id=${workoutId}>
         <h2>Title: ${workout.title}</h2>
         <h3>Date: ${workout.date}</h3>
@@ -31,12 +31,21 @@ Get Workout Fetch
         <button data-id=${workoutId}>Add another exercise</button>
     </div>
     <br><br>`
-    
+    renderWorkout(workoutId, workout)
     document.querySelector('#workout-container').innerHTML += postAttributes
 
 
+** Render Workout Function
+function renderWorkout(workoutId, workout) {
+const postWorkout = ` <div id="workout-${workoutId}" data-id=${workoutId}>
+    <h2>Title: ${workout.title}</h2>
+    <h3>Date: ${workout.date}</h3>`
 
-POST fetch render - JS
+    document.querySelector('#workout-container').innerHTML += postWorkout
+    }
+
+
+** POST fetch render - JS
     const newWorkout = `
     <div data-id=${workout.id}>
         <h2>${workout.attributes.title}</h2>
@@ -50,7 +59,37 @@ POST fetch render - JS
     document.querySelector('#new-workout-container').innerHTML += newWorkout
     // can refactor ^ into a global variable since used more than once
 
+** Render Attributes Fucntion
+    function renderAttributes(workoutId, attributes) {
+    const postAttributes = `
+    <h3>Category: ${attributes.category}</h3>
+    <h4>Calories: ${attributes.calories}</h4>
+    <h4>Duration: ${attributes.duration} (in minutes)</h4>
+    <button data-id=${workoutId}>Delete Workout</button>
+    </div> <br><br><br>`
+    
+    document.querySelector(`#workout-${workoutId}`).innerHTML += postAttributes
+    }
 
 
+
+
+
+Render for both attributes and workout
+(in postWorkout) // render(workoutId, workout.attributes, w)
+(in getWorkout) // render(workoutId, workout, attr )
+function render(workoutId, workout, attributes) {
+const postAttributes = ` <div id="workout-${workoutId}" data-id=${workoutId}>
+    <h2>Title: ${workout.title}</h2>
+    <h3>Date: ${workout.date}</h3>
+    <h3>Category: ${attributes.category}</h3>
+    <h4>Calories: ${attributes.calories}</h4>
+    <h4>Duration: ${attributes.duration} (in minutes)</h4>
+    <button data-id=${workout.id}>Add another exercise</button>
+</div>
+<br><br>`
+
+document.querySelector('#workout-container').innerHTML += postAttributes
+}
 
 
