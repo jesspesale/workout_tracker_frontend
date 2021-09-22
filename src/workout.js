@@ -11,7 +11,7 @@ class Workout {
 
     renderWorkout() {
         let element = document.getElementById(`workout-${this.id}`)
-
+        //if the element of that ID exists dont recreate the title/date elements
         if(typeof(element) != 'undefined' && element != null){
             return ""
         } else {

@@ -1,6 +1,8 @@
 // Creating a new workout and its atributes associated already
+// http://127.0.0.1:3000/api/v1/workouts
 
 const workout_url = "http://127.0.0.1:3000/api/v1/workouts"
+const exercise_url = "http://127.0.0.1:3000/api/v1/exercise_attributes"
 
 document.addEventListener('DOMContentLoaded', () => {
     getWorkouts()
@@ -21,42 +23,42 @@ function getWorkouts() {
             let workoutId = w.id
             
             let newWorkout = new Workout(workoutId, workout)
-            document.querySelector('#workout-container').innerHTML +=  newWorkout.renderWorkout()
+            document.querySelector('#workout-container').insertAdjacentHTML('afterbegin', newWorkout.renderWorkout())
 
             workout.exercise_attributes.forEach(attr => {    
-                // new ExerciseAttribute(attr)
-                // let att = attr
+
                 let newAttribute = new ExerciseAttribute(attr)
-                // debugger
-                // renderAttributes(workoutId, attr)
-                document.querySelector(`#workout-${workoutId}`).innerHTML += newAttribute.renderExercise() 
-                // debugger
+
+                document.querySelector(`#workout-${workoutId}`).insertAdjacentHTML('beforeend', newAttribute.renderExercise() ) 
+                 newAttribute.attachDeleteButtonListener()
+                 // debugger
+                })
             })
         })
-    })
-    // .catch(err => console.log(err))
-}
-
-function postWorkout(title, date, category, calories, duration) {
-    // console.log(title, date, category, calories, duration)
-    let bodyData = {title, date, category, calories, duration}
-    fetch(workout_url, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(bodyData)
-    })
-    .then(response => response.json())
-    .then(wo => {
-        let workout = wo.data.attributes
-        let w = workout.exercise_attributes[workout.exercise_attributes.length - 1]
-        let workoutId = w.workout_id
-
-        let newWorkout = new Workout(workoutId, workout)
-        document.querySelector('#workout-container').innerHTML +=  newWorkout.renderWorkout()
-        // debugger
-        let newAttribute = new ExerciseAttribute(w)
-        document.querySelector(`#workout-${workoutId}`).innerHTML += newAttribute.renderExercise()  
-    })
+        // .catch(err => console.log(err))
+    }
+    
+    function postWorkout(title, date, category, calories, duration) {
+        // console.log(title, date, category, calories, duration)
+        let bodyData = {title, date, category, calories, duration}
+        fetch(workout_url, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(bodyData)
+        })
+        .then(response => response.json())
+        .then(wo => {
+            let workout = wo.data.attributes
+            let w = workout.exercise_attributes[workout.exercise_attributes.length - 1]
+            let workoutId = w.workout_id
+            
+            let newWorkout = new Workout(workoutId, workout)
+            document.querySelector('#workout-container').innerHTML +=  newWorkout.renderWorkout()
+            // debugger
+            let newAttribute = new ExerciseAttribute(w)
+            document.querySelector(`#workout-${workoutId}`).innerHTML += newAttribute.renderExercise()  
+             newAttribute.attachDeleteButtonListener()
+        })
 }
 
 
