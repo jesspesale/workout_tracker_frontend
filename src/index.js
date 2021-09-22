@@ -19,7 +19,6 @@ function getWorkouts() {
         workouts.data.forEach(w => {
             let workout = w.attributes
             let workoutId = w.id
-           
             
             let newWorkout = new Workout(workoutId, workout)
             document.querySelector('#workout-container').innerHTML +=  newWorkout.renderWorkout()
@@ -30,34 +29,12 @@ function getWorkouts() {
                 let newAttribute = new ExerciseAttribute(attr)
                 // debugger
                 // renderAttributes(workoutId, attr)
-                document.querySelector(`#workout-${workoutId}`).innerHTML += newAttribute.renderAttributes() 
-                debugger
+                document.querySelector(`#workout-${workoutId}`).innerHTML += newAttribute.renderExercise() 
+                // debugger
             })
         })
     })
     // .catch(err => console.log(err))
-}
-
-
-// put in hold already
-function renderWorkout(workoutId, workout) {
-    const postWorkout = ` <div id="workout-${workoutId}" data-id=${workoutId}>
-        <h2>Title: ${workout.title}</h2>
-        <h3>Date: ${workout.date}</h3>`
-
-    document.querySelector('#workout-container').innerHTML +=  postWorkout
-}
-
-// put in hold already
-function renderAttributes(workoutId, attributes) {
-        const postAttributes = `
-        <h3>Category: ${attributes.category}</h3>
-        <h4>Calories: ${attributes.calories}</h4>
-        <h4>Duration: ${attributes.duration} (in minutes)</h4> 
-        <button data-id=${workoutId}>Delete Workout</button>
-        </div> <br><br><br>`
-
-        document.querySelector(`#workout-${workoutId}`).innerHTML += postAttributes     
 }
 
 function postWorkout(title, date, category, calories, duration) {
@@ -71,12 +48,17 @@ function postWorkout(title, date, category, calories, duration) {
     .then(response => response.json())
     .then(wo => {
         let workout = wo.data.attributes
-        let workoutId = workout.id
         let w = workout.exercise_attributes[workout.exercise_attributes.length - 1]
-        renderWorkout(workoutId, workout)
-        renderAttributes(workoutId, w)
+        let workoutId = w.workout_id
+
+        let newWorkout = new Workout(workoutId, workout)
+        document.querySelector('#workout-container').innerHTML +=  newWorkout.renderWorkout()
+        // debugger
+        let newAttribute = new ExerciseAttribute(w)
+        document.querySelector(`#workout-${workoutId}`).innerHTML += newAttribute.renderExercise()  
     })
 }
+
 
 function createFormHandler(e) {
     e.preventDefault()          // prevents the page from refreshing when submit is clicked      

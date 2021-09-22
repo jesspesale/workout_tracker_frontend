@@ -3,7 +3,6 @@
 class ExerciseAttribute {
 
     constructor(attribute) {
-        // debugger
         this.id = attribute.id
         this.category = attribute.category
         this.calories = attribute.calories
@@ -12,15 +11,15 @@ class ExerciseAttribute {
         ExerciseAttribute.all.push(this)
     }
 
-    renderAttributes() {
+    renderExercise() {
+
         return `
         <h3>Category: ${this.category}</h3>
         <h4>Calories: ${this.calories}</h4>
         <h4>Duration: ${this.duration} (in minutes)</h4> 
         <button data-id=${this.workout_id}>Delete Workout</button>
-        </div> <br><br><br>`
+        <br><br><br>`
     }
-
 
 }
 
