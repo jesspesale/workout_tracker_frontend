@@ -26,12 +26,10 @@ function getWorkouts() {
             document.querySelector('#workout-container').insertAdjacentHTML('afterbegin', newWorkout.renderWorkout())
 
             workout.exercise_attributes.forEach(attr => {    
-
                 let newAttribute = new ExerciseAttribute(attr)
 
                 document.querySelector(`#workout-${workoutId}`).insertAdjacentHTML('beforeend', newAttribute.renderExercise() ) 
                  newAttribute.attachDeleteButtonListener()
-                 // debugger
                 })
             })
         })
@@ -39,7 +37,6 @@ function getWorkouts() {
     }
     
     function postWorkout(title, date, category, calories, duration) {
-        // console.log(title, date, category, calories, duration)
         let bodyData = {title, date, category, calories, duration}
         fetch(workout_url, {
             method: "POST",
@@ -54,13 +51,12 @@ function getWorkouts() {
             
             let newWorkout = new Workout(workoutId, workout)
             document.querySelector('#workout-container').innerHTML +=  newWorkout.renderWorkout()
-            // debugger
+
             let newAttribute = new ExerciseAttribute(w)
             document.querySelector(`#workout-${workoutId}`).innerHTML += newAttribute.renderExercise()  
              newAttribute.attachDeleteButtonListener()
         })
 }
-
 
 function createFormHandler(e) {
     e.preventDefault()          // prevents the page from refreshing when submit is clicked      
