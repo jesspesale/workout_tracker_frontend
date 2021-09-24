@@ -14,11 +14,19 @@ class Workout {
         //if the element of that ID exists dont recreate the title/date elements
         if(typeof(element) != 'undefined' && element != null){
             return ""
-        } else {
-            return `<div id="workout-${this.id}" data-id=${this.id}>
-                <h2>Title: ${this.title}</h2>
-                <h3>Date: ${this.date}</h3>
-                </div>`
+        } else { 
+            return `
+        <div id="workout-${this.id}" data-id=${this.id}>
+        <ul class="list-group">
+            <li class="list-group-item active">${this.title}</li>
+            <li class="list-group-item">Date: ${this.date}</li>
+        </ul>
+        </div>`
+
+            // return `<div id="workout-${this.id}" data-id=${this.id}>
+            //     <h2>Title: ${this.title}</h2>
+            //     <h3>Date: ${this.date}</h3>
+            //     </div>`
             }
     }
 }

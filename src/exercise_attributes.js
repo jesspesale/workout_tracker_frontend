@@ -12,14 +12,9 @@ class ExerciseAttribute {
         ExerciseAttribute.all.push(this)
     }
 
-    // static findById(id) {
-    //     this.all.find(exercise_attribute => exercise_attribute.id === this.id)
-    // }
 
-    attachDeleteButtonListener() {
-       
+    attachDeleteButtonListener() {  
     const deleteExerciseButton = document.getElementById(`button-${this.id}`)
-   // debugger
     
         deleteExerciseButton.addEventListener('click', (e) => {
             this.deleteExercise(e)
@@ -27,7 +22,7 @@ class ExerciseAttribute {
         )
     }
 
-    //static deleteExercise(e) {
+
      deleteExercise(e) {
          const deleteExercise = document.getElementById(`exercise-${this.id}`)
          let ex = e
@@ -46,17 +41,24 @@ class ExerciseAttribute {
 
     }
 
-
-
     renderExercise() {
         return `
-        <div id="exercise-${this.id}">
-        <h3>Category: ${this.category}</h3>
-        <h4>Calories: ${this.calories}</h4>
-        <h4>Duration: ${this.duration} (in minutes)</h4> 
-        <button id="button-${this.id}">Delete Exercise</button>
-        </div>
-        <br><br><br>`
+         <div id="exercise-${this.id}">
+            <li class="list-group-item">Category: ${this.category}</li>
+            <li class="list-group-item">${this.calories}</li>
+            <li class="list-group-item">${this.duration} minutes</li>
+            <button id="button-${this.id}" type="button" class="list-group-item list-group-item-action">Delete Exercise</button>
+            </div>
+            <br>
+        `
+        // return `
+        // <div id="exercise-${this.id}">
+        // <h3>Category: ${this.category}</h3>
+        // <h4>Calories: ${this.calories}</h4>
+        // <h4>Duration: ${this.duration} (in minutes)</h4> 
+        // <button id="button-${this.id}">Delete Exercise</button>
+        // </div>
+        // <br><br><br>`
     }
 
 }
