@@ -5,6 +5,7 @@ const workout_url = "http://127.0.0.1:3000/api/v1/workouts"
 const exercise_url = "http://127.0.0.1:3000/api/v1/exercise_attributes"
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM is loaded")
     getWorkouts()
     const newWorkoutForm = document.querySelector("#new-workout-form")
 
