@@ -2,7 +2,7 @@
   padding-top: 3rem;
   padding-bottom: 3rem;
   margin-bottom: 0;
-  background-color: #fff;
+  background-color: #C8B5E3;
 }
 @media (min-width: 768px) {
   .jumbotron {
@@ -21,6 +21,31 @@
 
 .jumbotron .container {
   max-width: 40rem;
+}
+
+.list-group-item-action {
+    color: red;
+}
+.btn.btn-primary {
+    background-color: #788B91;
+    border: #788B91;
+}
+
+.list-group-item.active {
+    background-color: #788B91;
+    border: #788B91;
+}
+
+.container {
+    background-color: #1CE6DA ;
+}
+
+div.albulm {
+    background-color: #788B91;
+}
+
+.text-muted {
+     background-color: #788B91;
 }
 
 footer {
