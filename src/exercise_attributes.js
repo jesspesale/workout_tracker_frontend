@@ -3,7 +3,6 @@
 class ExerciseAttribute {
 
     constructor(attribute) {
-        // debugger
         this.id = attribute.id
         this.category = attribute.category
         this.calories = attribute.calories
@@ -18,7 +17,7 @@ class ExerciseAttribute {
     
         deleteExerciseButton.addEventListener('click', (e) => {
             this.deleteExercise(e)
-        }
+            }
         )
     }
 
@@ -28,7 +27,6 @@ class ExerciseAttribute {
          let ex = e
         e.preventDefault()
         const exercise = {id: this.id}
-        //  debugger
         return fetch( exercise_url + "/" + this.id, {
             method: 'DELETE',
             headers: {
@@ -45,20 +43,12 @@ class ExerciseAttribute {
         return `
          <div id="exercise-${this.id}">
             <li class="list-group-item">Category: ${this.category}</li>
-            <li class="list-group-item">${this.calories}</li>
+            <li class="list-group-item">${this.calories} calories</li>
             <li class="list-group-item">${this.duration} minutes</li>
             <button id="button-${this.id}" type="button" class="list-group-item list-group-item-action">Delete Exercise</button>
             </div>
             <br>
         `
-        // return `
-        // <div id="exercise-${this.id}">
-        // <h3>Category: ${this.category}</h3>
-        // <h4>Calories: ${this.calories}</h4>
-        // <h4>Duration: ${this.duration} (in minutes)</h4> 
-        // <button id="button-${this.id}">Delete Exercise</button>
-        // </div>
-        // <br><br><br>`
     }
 
 }

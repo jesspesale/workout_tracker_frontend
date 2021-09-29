@@ -22,11 +22,6 @@ class Workout {
             <li class="list-group-item">Date: ${this.date}</li>
         </ul>
         </div>`
-
-            // return `<div id="workout-${this.id}" data-id=${this.id}>
-            //     <h2>Title: ${this.title}</h2>
-            //     <h3>Date: ${this.date}</h3>
-            //     </div>`
             }
     }
 }

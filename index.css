@@ -10,6 +10,9 @@
     padding-bottom: 6rem;
   }
 }
+main {
+  background-color: #C8B5E3;
+}
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -20,7 +23,7 @@
 }
 
 .jumbotron .container {
-  max-width: 40rem;
+  max-width: 20rem;
 }
 
 .list-group-item-action {
@@ -38,6 +41,10 @@
 
 .container {
     background-color: #1CE6DA ;
+}
+
+#workout-container {
+  max-width: 20rem;
 }
 
 div.albulm {

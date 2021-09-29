@@ -93,3 +93,20 @@ document.querySelector('#workout-container').innerHTML += postAttributes
 }
 
 
+renderExercise
+
+        // return `
+        // <div id="exercise-${this.id}">
+            // <h3>Category: ${this.category}</h3>
+            // <h4>Calories: ${this.calories}</h4>
+            // <h4>Duration: ${this.duration} (in minutes)</h4>
+            // <button id="button-${this.id}">Delete Exercise</button>
+            // </div>
+        // <br><br><br>`
+
+renderWorkout
+
+// return `<div id="workout-${this.id}" data-id=${this.id}>
+    // <h2>Title: ${this.title}</h2>
+    // <h3>Date: ${this.date}</h3>
+    // </div>`

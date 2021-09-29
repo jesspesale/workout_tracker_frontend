@@ -5,7 +5,6 @@ const workout_url = "http://127.0.0.1:3000/api/v1/workouts"
 const exercise_url = "http://127.0.0.1:3000/api/v1/exercise_attributes"
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM is loaded")
     getWorkouts()
     const newWorkoutForm = document.querySelector("#new-workout-form")
 
@@ -18,7 +17,6 @@ function getWorkouts() {
     fetch(workout_url)
     .then(response => response.json())
     .then(workouts => {
-        // console.log(workouts)
         workouts.data.forEach(w => {
             let workout = w.attributes
             let workoutId = w.id
@@ -34,7 +32,6 @@ function getWorkouts() {
                 })
             })
         })
-        // .catch(err => console.log(err))
     }
     
     function postWorkout(title, date, category, calories, duration) {
