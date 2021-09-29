@@ -18,8 +18,8 @@ class Workout {
             return `
         <div id="workout-${this.id}" data-id=${this.id}>
         <ul class="list-group">
-            <li class="list-group-item active">${this.title}</li>
-            <li class="list-group-item">Date: ${this.date}</li>
+            <li class="list-group-item active"><strong>${this.title}</strong></li>
+            <li class="list-group-item"><strong>Date:</strong> ${this.date}</li>
         </ul>
         </div>`
             }

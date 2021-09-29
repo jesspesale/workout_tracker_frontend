@@ -42,9 +42,9 @@ class ExerciseAttribute {
     renderExercise() {
         return `
          <div id="exercise-${this.id}">
-            <li class="list-group-item">Category: ${this.category}</li>
-            <li class="list-group-item">${this.calories} calories</li>
-            <li class="list-group-item">${this.duration} minutes</li>
+            <li class="list-group-item"><strong>Category:</strong> ${this.category}</li>
+            <li class="list-group-item"><strong>Calories: </strong>${this.calories} </li>
+            <li class="list-group-item"><strong>Duriation: </strong>${this.duration} minutes</li>
             <button id="button-${this.id}" type="button" class="list-group-item list-group-item-action">Delete Exercise</button>
             </div>
             <br>

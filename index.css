@@ -23,7 +23,7 @@ main {
 }
 
 .jumbotron .container {
-  max-width: 20rem;
+  max-width: 35rem;
 }
 
 .list-group-item-action {
@@ -44,7 +44,8 @@ main {
 }
 
 #workout-container {
-  max-width: 20rem;
+  max-width: 40rem;
+  padding: 6rem;
 }
 
 div.albulm {
