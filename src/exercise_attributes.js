@@ -1,5 +1,3 @@
-// console.log("in exercise_attribute.js")
-
 class ExerciseAttribute {
 
     constructor(attribute) {
@@ -11,21 +9,18 @@ class ExerciseAttribute {
         ExerciseAttribute.all.push(this)
     }
 
-
     attachDeleteButtonListener() {  
     const deleteExerciseButton = document.getElementById(`button-${this.id}`)
     
         deleteExerciseButton.addEventListener('click', (e) => {
+            e.preventDefault()
             this.deleteExercise(e)
             }
         )
     }
 
-
      deleteExercise(e) {
-         const deleteExercise = document.getElementById(`exercise-${this.id}`)
-         let ex = e
-        e.preventDefault()
+        const deletedExercise = document.getElementById(`exercise-${this.id}`)
         const exercise = {id: this.id}
         return fetch( exercise_url + "/" + this.id, {
             method: 'DELETE',
@@ -35,8 +30,7 @@ class ExerciseAttribute {
              body: JSON.stringify(exercise)
         })
         .then(resp => resp.json())
-        .then(data => deleteExercise.remove() )
-
+        .then(data => deletedExercise.remove() )
     }
 
     renderExercise() {
@@ -47,10 +41,8 @@ class ExerciseAttribute {
             <li class="list-group-item"><strong>Duriation: </strong>${this.duration} minutes</li>
             <button id="button-${this.id}" type="button" class="list-group-item list-group-item-action">Delete Exercise</button>
             </div>
-            <br>
-        `
+            <br>`
     }
-
 }
 
 ExerciseAttribute.all = []
